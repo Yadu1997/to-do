@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <h1>Tasks to be done</h1>
+        <div><input id="userinput" type="text" placeholder="Enter here"> <button onclick="addTask()" id="button1">Click to Add</button></div>
+        <div>
+            <ol id="output">
+                
+            </ol>
+        </div>
+        
+    </main>
+</body>
+<script>
+    names = []
+    const addTask = () =>{
+        if (userinput.value) {
+            output.innerHTML += `<li id="lis">  ${userinput.value} <input id="chkid" type="checkbox"> <button onclick ="deletetask()">Delete</button> </li> `
+            names.push(userinput.value) 
+            localStorage.setItem('task', JSON.stringify(names))
+        } else {
+            alert("Please enter any Value")
+        }
+    }
+    const deletetask = () =>{
+        if (chkid.checked) {
+            localStorage.removeItem("task")
+            output.innerHTML=""
+        }else{
+            alert("Please select any")
+        }
+    }
+</script>
+</html>
